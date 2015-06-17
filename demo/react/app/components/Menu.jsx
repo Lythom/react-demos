@@ -3,14 +3,6 @@
 var Content;
 Content = React.createClass({
 
-    componentDidMount: function () {
-
-    },
-
-    componentWillUnmount: function () {
-
-    },
-
     getDefaultProps: function () {
         return {
             entries: []

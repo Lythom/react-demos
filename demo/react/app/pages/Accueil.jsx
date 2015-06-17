@@ -3,15 +3,6 @@
 var Accueil;
 Accueil = React.createClass({
 
-    componentDidMount: function () {
-
-    },
-
-    componentWillUnmount: function () {
-
-    },
-
-
     render: function () {
         return (
             <div>

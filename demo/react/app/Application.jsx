@@ -1,6 +1,6 @@
 "use strict";
 
-var Menu = require('component/Menu');
+var Menu = require('components/Menu');
 var Content1 = require('pages/Content1');
 var Content2 = require('pages/Content2');
 var Content3 = require('pages/Content3');

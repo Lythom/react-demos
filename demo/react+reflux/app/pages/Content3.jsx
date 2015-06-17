@@ -1,5 +1,7 @@
 "use strict";
 
+var Counter = require('components/Counter');
+
 var Content;
 Content = React.createClass({
 
@@ -17,6 +19,7 @@ Content = React.createClass({
             <div>
                 <h2>Contenu 3</h2>
                 <div>Troisème page de contenu</div>
+                <Counter counterId="content2"/>
             </div>
         )
     }

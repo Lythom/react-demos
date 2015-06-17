@@ -9,14 +9,6 @@ Content = React.createClass({
         };
     },
 
-    componentDidMount: function () {
-
-    },
-
-    componentWillUnmount: function () {
-
-    },
-
     inc: function() {
         this.setState({
             count: this.state.count + 1

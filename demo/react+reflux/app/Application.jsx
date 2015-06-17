@@ -1,7 +1,6 @@
 "use strict";
 
-var Data = require('model/Data');
-var Menu = require('component/Menu');
+var Menu = require('components/Menu');
 var Content1 = require('pages/Content1');
 var Content2 = require('pages/Content2');
 var Content3 = require('pages/Content3');
@@ -49,15 +48,15 @@ App = React.createClass({
             content = <Content1 />
         } else if (this.state.page === 'content2') {
             content = <Content2 />
-        } else if (this.state.page === 'content4') {
-            content = <Content4 />
+        } else if (this.state.page === 'content3') {
+            content = <Content3 />
         } else {
             content = <Accueil />
         }
 
         return (
             <div>
-                <h1>Demo React seul</h1>
+                <h1>Demo React + Reflux</h1>
 
                 <Menu entries={this.state.menuEntries} entryClicked={this.entryClicked} selected={this.state.page}/>
 

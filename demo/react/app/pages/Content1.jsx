@@ -3,15 +3,6 @@
 var Content;
 Content = React.createClass({
 
-    componentDidMount: function () {
-
-    },
-
-    componentWillUnmount: function () {
-
-    },
-
-
     render: function () {
         return (
             <div>

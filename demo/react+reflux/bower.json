@@ -10,7 +10,8 @@
     "tests"
   ],
   "dependencies": {
-    "react": "~0.13.3"
+    "react": "~0.13.3",
+    "reflux": "~0.2.8"
   },
   "overrides": {
     "react": {
