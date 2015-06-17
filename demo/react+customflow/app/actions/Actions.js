@@ -2,15 +2,19 @@ var Data = require('model/Data');
 var _ = require('lib/lodash');
 
 var Actions = {
-    incrementCounter: function(counterId){
+    incrementCounter: function (counterId) {
         var counters = Data.getObjectRef('counters');
         var count = counters[counterId];
-        if(!_.isNumber(count)){
+        if (!_.isNumber(count)) {
             counters[counterId] = 1;
         } else {
             counters[counterId] = count + 1
         }
         Data.setObjectRef('counters', counters);
+    },
+
+    gotoPage: function (page) {
+        Data.setString('ui.page', page.replace('#',''));
     }
 }
 

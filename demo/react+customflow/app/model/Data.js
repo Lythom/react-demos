@@ -138,6 +138,7 @@ var Data = {
 MicroEvent.mixin(Data);
 
 function getNode(tree, key) {
+    if(key == '') return tree;
     var keyList = key.split('.');
     var node = tree;
     for (var i = 0; i < keyList.length; i++) {

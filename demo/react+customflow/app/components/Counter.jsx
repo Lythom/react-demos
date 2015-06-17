@@ -1,7 +1,7 @@
 "use strict";
 
 var Data = require('model/Data');
-var CounterActions = require('actions/CounterActions');
+var Actions = require('actions/Actions');
 var _ = require('lib/lodash');
 
 var Counter;
@@ -33,7 +33,7 @@ Counter = React.createClass({
     },
 
     inc: function(){
-        CounterActions.incrementCounter(this.props.counterId);
+        Actions.incrementCounter(this.props.counterId);
     },
 
     onCounterChange: function (key, value, formerValue) {

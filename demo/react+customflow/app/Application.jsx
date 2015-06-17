@@ -6,17 +6,26 @@ var Content2 = require('pages/Content2');
 var Content3 = require('pages/Content3');
 var Accueil = require('pages/Accueil');
 
+var Actions = require('actions/Actions');
+
+var Data = require('model/Data');
+
 var App;
 App = React.createClass({
 
     componentDidMount: function () {
-
+        Data.bind('ui.page', this.onPageChange);
     },
+
+    componentWillUnmount: function () {
+        Data.unbind('ui.page', this.onPageChange);
+    },
+
     getInitialState: function () {
         this.initApp();
         this.initData();
         return {
-            page: 'accueil',
+            page: Data.getString('ui.page'),
             menuEntries: [
                 {link: '#accueil', label: 'Accueil'},
                 {link: '#content1', label: 'Contenu 1'},
@@ -34,11 +43,14 @@ App = React.createClass({
 
     },
 
-    entryClicked: function (entry) {
-        var page = entry.replace('#','');
+    onPageChange: function(key, page, previousPage){
         this.setState({
-            page: page
+           page: page
         });
+    },
+
+    entryClicked: function (entry) {
+        Actions.gotoPage(entry);
     },
 
     render: function () {
@@ -56,7 +68,7 @@ App = React.createClass({
 
         return (
             <div>
-                <h1>Demo React + Reflux</h1>
+                <h1>Demo React + Custom flow</h1>
 
                 <Menu entries={this.state.menuEntries} entryClicked={this.entryClicked} selected={this.state.page}/>
 
