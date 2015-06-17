@@ -1,12 +1,12 @@
-var CounterActions = require('actions/CounterActions');
+var Actions = require('actions/Actions');
 
-// fake database stuff
+// fake database
 var counterValues = {};
 
-CounterStore = Reflux.createStore({
+var CounterStore = Reflux.createStore({
     // this will set up listeners to all publishers in TodoActions, using onKeyname (or keyname) as callbacks
     init: function() {
-        this.listenTo(CounterActions.incrementCounter, this.onIncrementCounter);
+        this.listenTo(Actions.incrementCounter, this.onIncrementCounter);
     },
     onIncrementCounter: function(counterKey, value) {
         var foundItem = counterValues[counterKey];

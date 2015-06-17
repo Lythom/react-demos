@@ -1,7 +1,7 @@
 "use strict";
 
 var CounterStore = require('stores/CounterStore');
-var CounterActions = require('actions/CounterActions');
+var Actions = require('actions/Actions');
 
 var Counter;
 Counter = React.createClass({
@@ -19,15 +19,15 @@ Counter = React.createClass({
     },
 
     componentDidMount: function () {
-        this.unsubscribe = CounterStore.listen(this.onCounterChange);
+        this.unsubscribeonCounterChange = CounterStore.listen(this.onCounterChange);
     },
 
     componentWillUnmount: function () {
-        this.unsubscribe();
+        this.unsubscribeonCounterChange();
     },
 
     inc: function(){
-        CounterActions.incrementCounter(this.props.counterId);
+        Actions.incrementCounter(this.props.counterId);
     },
 
     onCounterChange: function (value) {

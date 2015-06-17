@@ -6,17 +6,25 @@ var Content2 = require('pages/Content2');
 var Content3 = require('pages/Content3');
 var Accueil = require('pages/Accueil');
 
+var Actions = require('./actions/Actions');
+var PageStore = require('stores/PageStore');
+
 var App;
 App = React.createClass({
 
     componentDidMount: function () {
-
+        this.unsubscribeonPageChange = PageStore.listen(this.onPageChange);
     },
+
+    componentWillUnmount: function () {
+        this.unsubscribeonPageChange();
+    },
+
     getInitialState: function () {
         this.initApp();
         this.initData();
         return {
-            page: 'accueil',
+            page: PageStore.getValue(),
             menuEntries: [
                 {link: '#accueil', label: 'Accueil'},
                 {link: '#content1', label: 'Contenu 1'},
@@ -31,11 +39,10 @@ App = React.createClass({
     },
 
     initData: function () {
-
+        // here load data from external source if needed
     },
 
-    entryClicked: function (entry) {
-        var page = entry.replace('#','');
+    onPageChange: function(page){
         this.setState({
             page: page
         });
@@ -58,7 +65,7 @@ App = React.createClass({
             <div>
                 <h1>Demo React + Reflux</h1>
 
-                <Menu entries={this.state.menuEntries} entryClicked={this.entryClicked} selected={this.state.page}/>
+                <Menu entries={this.state.menuEntries} entryClicked={Actions.gotoPage} selected={this.state.page}/>
 
                 <div className="content">
                     {content}

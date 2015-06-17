@@ -1,5 +1,6 @@
 var Actions = Reflux.createActions([
-    "incrementCounter"
+    "incrementCounter",
+    "gotoPage"
 ]);
 
 module.exports = Actions;
