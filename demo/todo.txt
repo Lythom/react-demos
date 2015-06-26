@@ -1,0 +1,2 @@
+ ☐ avec dataflow : inclure la page dans le flux de données.
+ ☐ version isomorphique
