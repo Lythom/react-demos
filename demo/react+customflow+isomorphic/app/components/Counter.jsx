@@ -1,5 +1,6 @@
 "use strict";
 
+var React = require('lib/react');
 var Data = require('model/Data');
 var Actions = require('actions/Actions');
 var _ = require('lib/lodash');
@@ -32,7 +33,10 @@ Counter = React.createClass({
         Data.unbind('counters', this.onCounterChange);
     },
 
-    inc: function(){
+    inc: function(e){
+        if(e != null){
+            e.preventDefault();
+        }
         Actions.incrementCounter(this.props.counterId);
     },
 
@@ -48,7 +52,7 @@ Counter = React.createClass({
         return (
             <div>
                 <div>Compteur {this.props.counterId} : {this.state.count}</div>
-                <button onClick={this.inc}>+1</button>
+                <a href={'/do-increment?counterId='+this.props.counterId} onClick={this.inc}>+1</a>
             </div>
         )
     }

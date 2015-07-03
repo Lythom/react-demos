@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>React Demo</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div id="content"></div>
+<script src="app.js"></script>
+<script>
+  var React = require('lib/react');
+  var MyApp = React.createFactory(require("Application"));
+
+  var Data = require('model/Data');
+  Data.setInitialState(Data.getDefaultInitialState());
+
+  React.render(
+          MyApp(),
+          document.getElementById("content")
+  );
+
+</script>
+</body>
+</html>

@@ -1,2 +1,4 @@
- ☐ avec dataflow : inclure la page dans le flux de données.
  ☐ version isomorphique
+ Enregistrer les changements en asynchrone qd js est activé
+ mémoriser les changements non effectués
+ réenvoyer les actions demandées lorsque le serveur redeviens dispo.

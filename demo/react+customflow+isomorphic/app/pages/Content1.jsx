@@ -1,4 +1,5 @@
 "use strict";
+var React = require('lib/react');
 
 var Counter = require('components/Counter');
 
@@ -17,10 +18,9 @@ Content = React.createClass({
     render: function () {
         return (
             <div>
-                <h2>Contenu 3</h2>
-                <div>Troisème page de contenu</div>
+                <h2>Contenu 1</h2>
+                <div>Première page de contenu</div>
                 <Counter counterId="content1"/>
-                <Counter counterId="content2"/>
             </div>
         )
     }

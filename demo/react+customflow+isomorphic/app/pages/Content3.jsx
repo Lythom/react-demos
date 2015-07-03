@@ -1,4 +1,5 @@
 "use strict";
+var React = require('lib/react');
 
 var Counter = require('components/Counter');
 

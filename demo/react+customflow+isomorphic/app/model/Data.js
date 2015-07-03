@@ -7,13 +7,16 @@
  */
 "use strict";
 
-var MicroEvent = require('lib/microevent');
-var _ = require('lib/lodash');
+var MicroEvent = require('../lib/microevent');
+var _ = require('../lib/lodash');
 
 var dataObject = {
     counters: {},
     ui: {
         page: 'accueil'
+    },
+    net: {
+        lastError: ''
     }
 };
 var Data = {
@@ -21,6 +24,11 @@ var Data = {
     setInitialState : function(state) {
         dataObject = state;
     },
+
+    getDefaultInitialState : function() {
+        return dataObject;
+    },
+
     /**
      * Register a string at the specified node key
      * @param key
@@ -213,16 +221,13 @@ function registerTrigger(key, newValue, oldValue, force) {
         batchOperations[key].newValue = newValue;
     }
 
-    for (var prop in batchOperations) {
-        if (batchOperations.hasOwnProperty(prop)) {
-            console.log('+' + prop);
+    if(typeof window !== 'undefined') {
+        if (batchTimeout != null) {
+            console.log('cancelling');
+            window.cancelAnimationFrame(batchTimeout);
         }
+        batchTimeout = window.requestAnimationFrame(triggerBatch);
     }
-    if (batchTimeout != null){
-        console.log('cancelling');
-        window.cancelAnimationFrame(batchTimeout);
-    }
-    batchTimeout = window.requestAnimationFrame(triggerBatch);
 }
 
 
