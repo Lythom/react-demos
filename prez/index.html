@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>React - De l'outil à la solution</title>
+
+		<meta name="description" content="React - De l’outil à la solution">
+		<meta name="author" content="Samuel Bouchet et Thomas de Tugny">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/beigeWide.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>React</h1>
+					<h2>De l’outil à la solution</h2>
+					<blockquote>
+						Présenté par <br/>Samuel Bouchet et Thomas de Tugny
+					</blockquote>
+				</section>
+
+				<section>
+					<h2>Introduction</h2>
+					<section>
+					<aside class="notes">
+						<ul>
+							<li>Librairie js de rendu HTML. Données => Rendu</li>
+							<li>Orienté composant</li>
+							<li>fb</li>
+							<li>Outillage : jsx, compilation, plugins jsx, plugin chrome</li> 
+						</ul>
+					</aside>
+					</section>
+				</section>
+
+				<section>
+					<h2>Plan</h2>
+					<section>
+					<ol>
+						<li>L’outil</li>
+						<li style="white-space:nowrap;">Gérer ses données</li>
+						<li>Isomorphisme</li>
+						<li>Workflow</li>
+					</ol>
+					<aside class="notes">
+						<ul>
+							<li>Thomas => L'outil, mise en oeuvre de react seul + flux</li>
+							<li>Samuel => Choix d'une architecture et workflow de developement</li>
+						</ul>
+					</aside>
+					</section>
+				</section>
+
+				<section>
+					<h2>React : l’outil</h2>
+					<section>
+						<h3>Objectifs</h3>
+						<aside class="notes">
+							<ul>
+								<li>Virtual DOM (approche inverse de jquery, DOM généré optimisé en accès grâce aux data-reactid)</li>
+								<li>Data flow libre</li>
+								<li>permet l’isomorphisme => SEO, accessibilité, performance</li>
+								<li>rendu (vue) uniquement, indépendant du contexte d’utilisation</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h3>Concepts clés</h3>
+						<aside class="notes">
+							<ul>
+								<li>Composants (création par classe)</li>
+								<li>Méthode de rendu</li>
+								<li>Communication hirerarchique entre composants (props)</li>
+								<li>Etat d’un composant (state)</li>
+								<li>Event listener</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h3>Jsx et aperçu du code source</h3>
+						<a class="source" href="https://facebook.github.io/react/jsx-compiler.html">https://facebook.github.io/react/jsx-compiler.html</a>
+						<aside class="notes">
+							<ul>
+								<li>Transformation jsx : https://facebook.github.io/react/jsx-compiler.html</li>
+								<li>particularités jsx : className, style, binding evenements</li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<h2>React : Gérer ses données</h2>
+					<section>
+						<h3>Flux</h3>
+						<img src="images/flux-simple.png" />
+						<legend>Flux - vue d'ensemble</legend>
+						<div class="source">source : <a href="http://fluxxor.com/what-is-flux.html">http://fluxxor.com/what-is-flux.html</a></div>
+					</section>
+					<section>
+						<h3>Flux</h3>
+						<img src="images/flux-diagram.png" style="max-height: 270px;" />
+						<legend>Flux - détail</legend>
+						<div class="source">source : <a href="https://github.com/ServiceStackApps/Chat-React">https://github.com/ServiceStackApps/Chat-React</a></div>
+					</section>
+					<section>
+						<h3>Reflux</h3>
+						<img src="images/reflux-diagram.png" style="max-height: 270px;" />
+						<legend>Relux - vue d'ensemble</legend>
+						<div class="source">source : <a href="https://github.com/ServiceStackApps/Chat-React">https://github.com/ServiceStackApps/Chat-React</a></div>
+					</section>
+					<section>
+						<h3>pas de framework</h3>
+						<img src="images/custom-diagram.png" style="max-height: 270px;" />
+						<legend>Idée - vue d'ensemble</legend>
+					</section>
+					<section>
+						<h3>Orienter son modèle de données pour les performances</h3>
+						<aside class="notes">
+							Pour obtenir les meilleurs performances possibles : nécessite l’utilisation d’un modèle de donnée immuables par forcément facile à mettre en oeuvre. Sans modèle immuable, plus difficile d’optimiser les perfs. Pas forcément obligatoire.
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<h2>React : Isomorphisme</h2>
+					<section>
+						<h3>Avantages du rendu côté serveur</h3>
+						<ul>
+							<li>Accessibilité</li>
+							<li>Référencement</li>
+							<li>Performances</li>
+						</ul>
+						<aside class="notes">
+							<ul>
+								<li>Accessibilité</li>
+								<li>Référencement</li>
+								<li>Performances</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h3>Avantages de l’isomorphisme</h3>
+						<ul>
+							<li>DRY</li>
+							<li>Cohérence</li>
+							<li>Prédiction optimiste</li>
+						</ul>
+						<aside class="notes">
+							<ul>
+								<li>DRY</li>
+								<li>Cohérence - limite les erreurs</li>
+								<li>Prédiction optimiste = immediate feedback</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h3>Démonstration</h3>
+						<a class="source" href="https://github.com/Lythom/react-demos/">https://github.com/Lythom/react-demos/</a>
+					</section>
+				</section>
+
+				<section>
+					<h2>React : Workflow technique</h2>
+					<section>
+						<h3>Languages (avec jsx)</h3>
+						<ul>
+							<li>Javascript (E6 with babel)</li>
+							<li>Coffee</li>
+							<li>TypeScript</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Outils de compilation / bundling</h3>
+						<ul>
+							<li>Grunt</li>
+							<li>Gulp</li>
+							<li class="highlight-blue">Brunch</li>
+							<li>RequireJS</li>
+							<li>Browserify</li>
+							<li>Webpack</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Editeurs</h3>
+						<ul>
+							<li>Sublime</li>
+							<li>WebStorm</li>
+							<li>Atom</li>
+							<li>Brackets</li>
+							<li>vim</li>
+						</ul>
+						<aside class="notes">
+							<ul>
+								<li>DRY</li>
+								<li>Cohérence - limite les erreurs</li>
+								<li>Prédiction optimiste = immediate feedback</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h3>Autres outils / libs</h3>
+						<ul>
+							<li>Routage</li>
+							<li>Gestionnaires de données</li>
+							<li>Data Fetching (communication client/server)</li>
+							<li>Composants UI prêts à l'emploi</li>
+						</ul>
+						<p class="source">Tous les outils complémentaires sur <a href="https://github.com/facebook/react/wiki/Complementary-Tools">https://github.com/facebook/react/wiki/Complementary-Tools</a></p>
+					</section>
+				</section>
+
+				<section>
+					<h2>React : Workflow humain</h2>
+					<section>
+					<ul>
+						<li>Un niveau de transformation supplémentaire sur un modèle classique &nbsp;:<br/>Intégration <-> Dev front <-> Dev Back</li>
+						<li>Bye bye JQuery</li>
+					</ul>
+					</section>
+				</section>
+
+				<section>
+					<h2>Conclusion</h2>
+					<section></section>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

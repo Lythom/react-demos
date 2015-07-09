@@ -48,8 +48,8 @@ App = React.createClass({
             content = <Content1 />
         } else if (this.state.page === 'content2') {
             content = <Content2 />
-        } else if (this.state.page === 'content4') {
-            content = <Content4 />
+        } else if (this.state.page === 'content3') {
+            content = <Content3 />
         } else {
             content = <Accueil />
         }
