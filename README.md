@@ -1,2 +1,4 @@
 = React demos =
-Work in progress.
+npm install
+bower install
+brunch w --server
