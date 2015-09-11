@@ -1,0 +1,28 @@
+{
+  "name": "react-demo",
+  "version": "0.1.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.13.3",
+    "flux": "^2.0.1",
+    "eventemitter2": "*",
+    "object-assign": "*",
+    "merge": "*",
+    "mirrorkey": "^1.2.0"
+  },
+  "overrides": {
+    "react": {
+      "main": "react-with-addons.js"
+    },
+    "object-assign": {
+      "main": "object-assign.js"
+    }
+  }
+}

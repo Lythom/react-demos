@@ -1,0 +1,22 @@
+{
+  "name": "react-demo",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "auto-reload-brunch": "^1.7.8",
+    "autoprefixer": "^5.1.0",
+    "bower": "^1.4.1",
+    "brunch": "^1.8.3",
+    "csswring": "^3.0.0",
+    "javascript-brunch": "^1.7.1",
+    "postcss-brunch": "^0.4.x",
+    "react-brunch": "^1.0.9",
+    "sass-brunch": "^1.8.10",
+    "object-keys": "^1.0.7"
+  },
+  "dependencies": {
+    "lodash": "^3.9.3",
+    "microevent-github": "^1.0.0",
+    "react": "^0.13.3"
+  }
+}
